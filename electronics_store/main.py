@@ -24,6 +24,8 @@ if __name__ == '__main__':
     print("Название товара: ", product_2.name_product)
     print("Цена товара: ", product_2.amount_product)
 
-
     print()
     print(Product.product_all)
+
+
+
