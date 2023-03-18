@@ -27,7 +27,7 @@ class Product:
     pay_rate = 1
     product_all = []
 
-    def __init__(self, name_product, amount_product, count_product):
+    def __init__(self, name_product: str, amount_product: float, count_product: int):
         """
         Экземпляр класса должен содержать атрибуты:
 
@@ -40,11 +40,14 @@ class Product:
         self.amount_product = amount_product
         self.count_product = count_product
 
-        Product.product_all.append(self)
+        self.product_all.append(self)
 
     def calculate_total_price(self):
         total_price = self.count_product * self.amount_product
         return total_price
 
     def apply_discount(self):
-        self.amount_product = self.amount_product * Product.pay_rate
+        self.amount_product = self.amount_product * self.pay_rate
+
+    def __repr__(self) -> str:
+        return self.name_product
