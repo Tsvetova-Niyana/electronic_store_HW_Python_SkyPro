@@ -27,8 +27,5 @@ if __name__ == '__main__':
     print()
     print(Product.product_all)
 
-    print(type(product_2.name_product))
-
-    product_3 = Product()
 
 
