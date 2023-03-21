@@ -76,7 +76,27 @@ class Product:
             reader = csv.DictReader(f)
 
             for row in reader:
-                new_product = Product(row["name"], row["price"], row["quantity"])
+
+                amount = float(row["price"])
+                product_count = float(row["quantity"])
+
+                if cls.is_integer(amount) and cls.is_integer(product_count):
+                    new_product = cls(row["name"], int(amount), int(product_count))
+                elif cls.is_integer(amount):
+                    new_product = cls(row["name"], int(amount), product_count)
+                elif cls.is_integer(product_count):
+                    new_product = cls(row["name"], amount, int(product_count))
+                else:
+                    new_product = cls(row["name"], amount, product_count)
+
+    @staticmethod
+    def is_integer(number) -> bool:
+        """Реализуйте статический метод, который проверяет, является ли число (например, полученное из csv-файла) целым.
+        Число 7.0, согласно этому методу, также является целым. Число 7.5 - нет. """
+        if isinstance(number, int):
+            return True
+        else:
+            return number.is_integer()
 
     def __repr__(self) -> str:
         return self.name_product

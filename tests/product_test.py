@@ -70,3 +70,36 @@ class TestProduct:
     def test_create_product_by_file(self):
         Product.create_product_by_file('electronics_store/items.csv')
         assert len(product.product_all) == 7
+
+    def test_check_int_by_is_integer(self):
+        assert Product.is_integer(5) is True
+
+    def test_check_int_with_fractional_part_by_is_integer(self):
+        assert Product.is_integer(7.0) is True
+
+    def test_check_float_by_is_integer(self):
+        assert Product.is_integer(8.5) is False
+
+    def test_check_float_amount_product_is_int(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert product.product_all[3].amount_product == 1000.25
+
+    def test_check_int_amount_product_is_int(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert product.product_all[6].amount_product == 75
+
+    def test_check_int_with_factorial_amount_product_is_int(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert product.product_all[2].amount_product == 100
+
+    def test_check_float_count_is_int(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert product.product_all[4].count_product == 5.5
+
+    def test_check_int_count_is_int(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert product.product_all[3].count_product == 3
+
+    def test_check_int_with_factorial_count_is_int(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert product.product_all[6].count_product == 5
