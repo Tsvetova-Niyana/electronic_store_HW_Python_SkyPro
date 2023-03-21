@@ -3,6 +3,7 @@ from product import Product
 if __name__ == '__main__':
     product_1 = Product("Смартфон", 10000, 20)
     product_2 = Product("Ноутбук", 20000, 5)
+    # product_2.name_product = "СуперНоутбук"
 
     print("\nПродукты:\n")
     print("Название товара: ", product_1.name_product)
@@ -26,6 +27,12 @@ if __name__ == '__main__':
 
     print()
     print(Product.product_all)
+
+    Product.create_product_by_file('../electronics_store/items.csv')
+
+    print(Product.product_all)
+
+
 
 
 

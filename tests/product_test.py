@@ -1,8 +1,11 @@
+import csv
+import os
+
 from electronics_store.product import Product
 import pytest
 
-
 product = Product("Смартфон", 10000, 20)
+
 
 class TestProduct:
     def test_check_name_at_init_product(self):
@@ -51,3 +54,19 @@ class TestProduct:
         with pytest.raises(TypeError):
             Product()
 
+    def test_check_len_name_exeptions(self):
+        with pytest.raises(ValueError):
+            product.name_product = "СуперНоутбук"
+
+    def test_open_file(self):
+        current = os.getcwd()
+        folder = "electronics_store"
+        full_path = os.path.join(current, folder, "items.csv")
+
+        with open(full_path) as file:
+            result = csv.DictReader(file)
+        assert result is not None
+
+    def test_create_product_by_file(self):
+        Product.create_product_by_file('electronics_store/items.csv')
+        assert len(product.product_all) == 7
