@@ -16,7 +16,6 @@
 - применить установленную скидку для конкретного товара
 """
 import csv
-import os
 
 
 class Product:
@@ -45,6 +44,12 @@ class Product:
         self.count_product = count_product
 
         self.product_all.append(self)
+
+    def __repr__(self) -> str:
+        return f"Product('{self.name_product}', {self.amount_product}, {self.count_product})"
+
+    def __str__(self):
+        return self.name_product
 
     def calculate_total_price(self):
         total_price = self.count_product * self.amount_product
@@ -90,7 +95,7 @@ class Product:
                 elif cls.is_integer(amount):
                     cls(row["name"], int(amount), product_count)
                 elif cls.is_integer(product_count):
-                   cls(row["name"], amount, int(product_count))
+                    cls(row["name"], amount, int(product_count))
                 else:
                     cls(row["name"], amount, product_count)
 
@@ -102,9 +107,3 @@ class Product:
             return True
         else:
             return number.is_integer()
-
-    def __repr__(self) -> str:
-        return f"Product('{self.name_product}', {self.amount_product}, {self.count_product})"
-
-    def __str__(self):
-        return self.name_product
