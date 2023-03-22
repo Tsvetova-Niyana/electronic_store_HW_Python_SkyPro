@@ -51,6 +51,17 @@ class Product:
     def __str__(self):
         return self.name_product
 
+    def __add__(self, other):
+        """Реализуйте также возможность сложения экземпляров класса Phone и Product.
+        Сложение идет по количеству товара в магазине.
+        Реализуйте проверки, чтобы нельзя было сложить Phone или Item с экземплярами не Phone или Product классов.
+        Т.е. с объектами других классов запрещено сложение."""
+
+        if isinstance(other, Product):
+            return self.count_product + other.count_product
+        else:
+            raise TypeError("Объекты должны относится к классам Product и/или Phone")
+
     def calculate_total_price(self):
         total_price = self.count_product * self.amount_product
         return total_price

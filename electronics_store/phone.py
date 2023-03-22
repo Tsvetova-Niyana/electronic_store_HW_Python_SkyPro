@@ -16,7 +16,11 @@ class Phone(Product):
 
     @number_supported_sim_cards.setter
     def number_supported_sim_cards(self, value: int) -> None:
+        if isinstance(value, str):
+            raise TypeError("Введенное значение должно быть целым числом больше нуля")
         if value <= 0 or not isinstance(value, int):
             raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
         else:
-            self.number_supported_sim_cards = value
+            self.__number_supported_sim_cards = value
+
+
