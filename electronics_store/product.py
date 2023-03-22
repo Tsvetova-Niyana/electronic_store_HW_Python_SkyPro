@@ -104,4 +104,7 @@ class Product:
             return number.is_integer()
 
     def __repr__(self) -> str:
+        return f"Product('{self.name_product}', {self.amount_product}, {self.count_product})"
+
+    def __str__(self):
         return self.name_product
