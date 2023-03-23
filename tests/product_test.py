@@ -103,3 +103,19 @@ class TestProduct:
     def test_check_int_with_factorial_count_is_int(self):
         Product.create_product_by_file('electronics_store/items.csv')
         assert product.product_all[6].count_product == 5
+
+    def test_check_repr_like_magic_methods(self):
+        product_3 = Product('Смартфон', 10000, 20)
+        assert product_3.__repr__() == "Product('Смартфон', 10000, 20)"
+
+    def test_check_str_like_magic_methods(self):
+        product_3 = Product('Смартфон', 10000, 20)
+        assert product_3.__str__() == "Смартфон"
+
+    def test_check_repr_like_user_func(self):
+        product_3 = Product('Смартфон', 10000, 20)
+        assert repr(product_3) == "Product('Смартфон', 10000, 20)"
+
+    def test_check_str__like_user_func(self):
+        product_3 = Product('Смартфон', 10000, 20)
+        assert str(product_3) == "Смартфон"
