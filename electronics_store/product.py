@@ -28,7 +28,7 @@ class Product:
     pay_rate = 1
     product_all = []
 
-    def __init__(self, name_product: str, amount_product: float, count_product: int):
+    def __init__(self, name_product: str, amount_product: float, count_product: int, **kwargs):
         """
         Экземпляр класса должен содержать атрибуты:
 
@@ -44,6 +44,7 @@ class Product:
         self.count_product = count_product
 
         self.product_all.append(self)
+        super().__init__(**kwargs)
 
     def __repr__(self) -> str:
         return f"Product('{self.name_product}', {self.amount_product}, {self.count_product})"
